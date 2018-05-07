@@ -4,6 +4,7 @@
     <ul>
       <li v-for="(item,index) in page" @click="itemClick(item,index)">{{ item.page }}</li>
     </ul>
+    <div @click="close">关闭</div>
   </div>
 </template>
 
@@ -30,6 +31,9 @@ export default {
           index:index
         }
       })
+    },
+    close(){
+      // mui.back()
     }
   }
 }
