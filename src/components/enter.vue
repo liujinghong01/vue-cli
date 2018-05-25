@@ -3,8 +3,10 @@
     <h1>{{ msg }}</h1>
     <ul>
       <li v-for="(item,index) in page" @click="itemClick(item,index)">{{ item.page }}</li>
+
     </ul>
-    <div @click="close">关闭</div>
+    <!--<div @click="close">通过url传参数</div>-->
+    <!--<input type="file"/>-->
   </div>
 </template>
 
@@ -15,8 +17,7 @@ export default {
     return {
       msg: ' 入口页面',
       page:[
-        {page:'页面1',path:'/page1'},
-        {page:'页面2',path:'/page2'}
+        {page:'页面1',path:'/page1'}
       ]
     }
   },
@@ -33,7 +34,7 @@ export default {
       })
     },
     close(){
-      // mui.back()
+      alert(window.location.href)
     }
   }
 }
@@ -43,10 +44,16 @@ export default {
 <style lang="less" scoped>
   h1{
     text-align: center;
+    height:1.5rem;
+    line-height: 1.5rem;
+    border-bottom: 1px solid #5270ff;
+    background: #5495FF;
   }
   li{
     width: 100%;
-    height: 1rem;
-    line-height: 1rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    border-bottom: 1px solid #5495FF;
   }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div class="view-page">
     <h3>你好，这是页面2</h3>
-    <span style="line-height: 2rem" @click="$router.go(-1)">  返回</span>
+    <p style="line-height: 2rem" @click="$router.goBack()">  返回</p>
+
   </div>
 </template>
 
@@ -12,5 +13,15 @@ export default {
 </script>
 
 <style lang="less">
-
+  h3{
+    text-align: center;
+    height:1.5rem;
+    line-height: 1.5rem;
+    border-bottom: 1px solid #5270ff;
+    background: #5495FF;
+  }
+  p{
+    text-align: center;
+    border-bottom: 1px solid #5495FF;
+  }
 </style>

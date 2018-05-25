@@ -4,6 +4,11 @@ import enter from '@/components/enter'
 
 Vue.use(Router)
 
+Router.prototype.goBack = function () {
+  this.isBack = true
+  window.history.go(-1)
+}
+
 export default new Router({
   routes: [
     {

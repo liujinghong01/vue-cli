@@ -30,10 +30,12 @@ router.beforeEach((to, from, next) => {
 router.afterEach(route => {
 
 })
-// Vue.mixin({
+Vue.mixin({
 //   beforeRouteLeave(to,from,next){
 //     //注册全局混合方法，由于所有页面都进行了缓存，页面返回时将当前页面销毁
-//     // alert(1)
+//     alert(1)
 //     next()
-//   }
-// })
+//   },
+
+})
+//
