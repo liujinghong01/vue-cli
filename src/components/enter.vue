@@ -3,14 +3,18 @@
     <h1>{{ msg }}</h1>
     <ul>
       <li v-for="(item,index) in page" @click="itemClick(item,index)">{{ item.page }}</li>
-
+      <li>{{ $store.state.count}}</li>
+      <li @click="$store.commit('add')">+</li>
+      <li @click="$store.commit('reduce')">-</li>
     </ul>
+
     <!--<div @click="close">通过url传参数</div>-->
     <!--<input type="file"/>-->
   </div>
 </template>
 
 <script>
+  import store from '@/vuex/store'
 export default {
   name: 'HelloWorld',
   data () {
@@ -21,6 +25,7 @@ export default {
       ]
     }
   },
+  store,
   mounted(){
 
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="view-page">
     <h3>你好，这是页面2</h3>
-    <p style="line-height: 2rem" @click="$router.goBack()">  返回</p>
+    <p style="line-height: 2rem" @click="$router.go(-1)">  返回</p>
 
   </div>
 </template>

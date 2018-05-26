@@ -4,6 +4,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from '@/vuex/store'
+import {mapState} from 'vuex';
 import comm from './api/common'
 
 
@@ -16,16 +18,35 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  // computed:mapState({
+  //   count:state=>state.count
+  // }),
+  data(){
+    return{
+      hash:this.$store.state.hash
+    }
+  },
+  mounted(){
+    router.beforeEach((to, from, next) => {
+      console.log(from.path+'》》'+ to.path )
+      if(this.hash.indexOf(to.path)===-1){
+        this.$store.commit('forward',to.path)
+      }else{
+        this.$store.commit('back',to.path)
+        this.$router.goBack()
+      }
+
+      next()
+
+    })
+  },
 })
 
 
-router.beforeEach((to, from, next) => {
-  console.log(from)
-  console.log(to)
-  next()
-})
+
 
 router.afterEach(route => {
 
@@ -37,5 +58,6 @@ Vue.mixin({
 //     next()
 //   },
 
+
 })
-//
+
