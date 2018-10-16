@@ -5,59 +5,37 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from '@/vuex/store'
-import {mapState} from 'vuex';
-import comm from './api/common'
 
+//按需引入部分组件
+import { Toast, Header} from 'mint-ui'
+Vue.prototype.$toast = Toast;
+Vue.component(Header.name, Header);
 
-
-
-
+//阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false
-
-/* eslint-disable no-new */
-new Vue({
+let mv = new Vue({
   el: '#app',
   router,
   store,
   components: { App },
   template: '<App/>',
-  // computed:mapState({
-  //   count:state=>state.count
-  // }),
   data(){
     return{
       hash:this.$store.state.hash
     }
   },
-  mounted(){
+  mounted() {
+    //监听全局路由，判断页面的前进跟后退
     router.beforeEach((to, from, next) => {
-      console.log(from.path+'》》'+ to.path )
-      if(this.hash.indexOf(to.path)===-1){
+      if(this.hash.indexOf(to.path) === -1) {
         this.$store.commit('forward',to.path)
-      }else{
+      } else {
         this.$store.commit('back',to.path)
-        this.$router.goBack()
+        // this.$destroy()
+        this.$router.isBack = true
       }
-
       next()
-
     })
   },
-})
-
-
-
-
-router.afterEach(route => {
-
-})
-Vue.mixin({
-//   beforeRouteLeave(to,from,next){
-//     //注册全局混合方法，由于所有页面都进行了缓存，页面返回时将当前页面销毁
-//     alert(1)
-//     next()
-//   },
-
-
 })
 

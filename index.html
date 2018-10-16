@@ -3,23 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!--<script src="src/api/mui.min.js"></script>-->
     <script>
-
       //在头部文件还原设备实际分辨率
-      var pixclPatio = 1 / window.devicePixelRatio;
-      document.write('<meta name="viewport" content="width=device-width,initial-scale='
-        +pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=yes" />');
-      function autoRem (){
-        var html = document.getElementsByTagName('html')[0];
-        var pageWidth = html.getBoundingClientRect().width;
-        html.style.fontSize = pageWidth / 15 + 'px';
-      }
+      // var pixclPatio = 1 / window.devicePixelRatio;
+      // document.write('<meta name="viewport" content="width=device-width,initial-scale='
+      //   +pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=yes" />');
+      // function autoRem (){
+      //   var html = document.getElementsByTagName('html')[0];
+      //   var pageWidth = html.getBoundingClientRect().width;
+      //   html.style.fontSize = pageWidth / 15 + 'px';
+      // }
       //autoRem  动态调整rem基
-      autoRem()
-      window.addEventListener('resize',function () {
-        autoRem()
-      })
+      // autoRem()
+      // window.addEventListener('resize',function () {
+      //   autoRem()
+      // })
     </script>
     <title>test</title>
   </head>

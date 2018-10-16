@@ -1,27 +1,31 @@
 <template>
   <div id="app">
-    <transition :name="transitionName">
-      　　　　　　<router-view class="Router"></router-view>
-      　　　　</transition>
+      <transition :name="transitionName">
+        <keep-alive :include="includePageNames">
+          <!--<component class="Router" ></component>-->
+          <router-view class="Router"></router-view>
+        </keep-alive>
+　　　　</transition>
   </div>
 </template>
 
 <script>
+import store from '@/vuex/store'
 export default {
   name: 'App',
   data() {
     return {
       transitionName: 'slide-right' , // 默认动态路由变化为slide-right
-      isBack:false,
+      includePageNames:'enter'//入口页面默认需要缓存
     }
   },
-  mounted(){
+  mounted() {
 
   },
   watch: {
-    '$route' (to, from) {
-      let isBack = this.$router.isBack  //  监听路由变化时的状态为前进还是后退
-      console.log(isBack)
+    '$route' (to, from) {//  监听路由变化时的状态为前进还是后退
+      this.includePageNames='enter'+this.$store.state.hash.toString().replace(/\//g, "")
+      let isBack = this.$router.isBack
       if(isBack) {
         this.transitionName = 'slide-right'
       } else {
@@ -45,20 +49,22 @@ export default {
   .Router {
     position: absolute;
     width: 100%;
-    transition: all .8s ease;
+    transition: all .3s ease-out;
     top: 0px;
   }
-
   .slide-left-enter,
   .slide-right-leave-active {
-    /*opacity: 0;*/
+    opacity: 0;
+    transition: all .3s ease-in;
     -webkit-transform: translate(100%, 0);
     transform: translate(100%, 0);
   }
 
   .slide-left-leave-active,
   .slide-right-enter {
-    /*opacity: 0;*/
+    opacity: 1;
+    /*transition: all .3s ease-out;*/
+    transition: all .3s ease-in;
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100% 0);
   }

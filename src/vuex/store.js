@@ -1,31 +1,31 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-
 Vue.use(Vuex);
 
-
-const state={
+const state = {
   count:1,
   hash:['/']
 }
 
 
 
-const mutations={
-  add(state){
+const mutations = {
+  add() {
+    // console.log(this.state)
     state.count++;
   },
-  reduce(state){
+  reduce(){
     state.count--;
   },
-  forward(hash,path){
+  forward(state,path){
+    console.log(JSON.stringify(state))
     state.hash.push(path)
   },
-  back(hash,path){
+  back(state,path){
     var index=state.hash.indexOf(path)
     var length=state.hash.length
     state.hash.splice(index+1,length+2-index)
+    console.log(JSON.stringify(state.hash))
   }
 }
 

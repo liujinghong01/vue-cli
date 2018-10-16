@@ -1,24 +1,18 @@
 <template>
   <div class="view-page">
-    <h3> <span style="float: left;"  @click="$router.go(-1)">返回</span>你好,这是页面2</h3>
-    <p style="line-height: 2rem" @click="goPage()">  页面3</p>
+    <mt-header title="页面三">
+      <a   slot="left">
+        <a @click="$router.go(-1)" class="back-icon">返回</a>
+      </a>
+      <!--这个头部导航栏关键的是mt-header父标签,而该标签内的内容是根据需求写的哦-->
+    </mt-header>
 
   </div>
 </template>
 
 <script>
 export default {
-  name: 'page2',
-  methods:{
-    goPage(){
-      this.$router.push({
-        path:'/page3',
-
-      })
-    }
-  },
-  deactivated(){
-  }
+  name: 'page3'
 }
 </script>
 
@@ -35,3 +29,4 @@ export default {
     border-bottom: 1px solid #5495FF;
   }
 </style>
+inactive

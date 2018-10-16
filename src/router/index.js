@@ -4,15 +4,8 @@ import enter from '@/components/enter'
 
 Vue.use(Router)
 
-// Router.prototype.goBack = function () {
-//   this.isBack = true
-//   window.history.go(-1)
-// }
+//isBack:判断页面返回执行后退的动画
 Router.prototype.isBack = false
-Router.prototype.goBack = function () {
-  this.isBack = true
-  // window.history.go(-1)
-}
 
 export default new Router({
   routes: [
@@ -33,6 +26,13 @@ export default new Router({
       name: 'page2',
       component: function (resolve) {
         require(['@/view/page2/index'], resolve)
+      }
+    },
+    {
+      path: '/page3',
+      name: 'page3',
+      component: function (resolve) {
+        require(['@/view/page3/index'], resolve)
       }
     },
   ]

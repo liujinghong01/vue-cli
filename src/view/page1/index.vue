@@ -2,10 +2,14 @@
   <div class="view-page">
     <h3> <span style="float: left;"  @click="$router.go(-1)">返回</span>你好,这是页面1</h3>
     <p style="line-height: 2rem" @click="itemClick">  前往页面2</p>
+    <p>{{$store.state.count}}</p>
+    <p @click="$store.commit('add')">+</p>
+    <p @click="$store.commit('reduce')">-</p>
   </div>
 </template>
 
 <script>
+  import store from '@/vuex/store'
 export default {
   name: 'page1',
   data(){
@@ -21,8 +25,6 @@ export default {
       })
     }
   }
-
-
 }
 </script>
 

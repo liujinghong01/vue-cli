@@ -1,6 +1,11 @@
 <template>
   <div class="view-page">
-    <h1>{{ msg }}</h1>
+    <mt-header :title="msg">
+      <a   slot="left">
+        <a class="back-icon">1</a>
+      </a>
+      <!--这个头部导航栏关键的是mt-header父标签,而该标签内的内容是根据需求写的哦-->
+    </mt-header>
     <ul>
       <li v-for="(item,index) in page" @click="itemClick(item,index)">{{ item.page }}</li>
       <li>{{ $store.state.count}}</li>
@@ -15,8 +20,9 @@
 
 <script>
   import store from '@/vuex/store'
+  import {joinProject} from '@/api/request'
 export default {
-  name: 'HelloWorld',
+  name: 'enter',
   data () {
     return {
       msg: ' 入口页面',
@@ -27,7 +33,13 @@ export default {
   },
   store,
   mounted(){
-
+    this.$toast('Hello world!')
+    let requestData={token:'4MskjSMoBcSBRPFWFYg6PnelhJ6RQuZd',code:'PRO201809060373',mobile:'18566205263'}
+    joinProject(requestData).then(res => {
+      alert('啦啦啦德玛西亚')
+    }).catch(error => {
+      console.log(error.description)
+    })
   },
   methods:{
     itemClick(item,index){
