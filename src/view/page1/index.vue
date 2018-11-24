@@ -5,27 +5,42 @@
     <p>{{$store.state.count}}</p>
     <p @click="$store.commit('add')">+</p>
     <p @click="$store.commit('reduce')">-</p>
+    <img src="http://bpic.588ku.com/back_pic/05/77/13/045bee353edc1d7.jpg!r850/fw/800" preview="0" preview-text="美景">
+    <img src="http://bpic.588ku.com/back_pic/05/77/13/225bee38f0b9dc9.jpg!r850/fw/800" preview="0" preview-text="美女">
   </div>
 </template>
 
 <script>
+
   import store from '@/vuex/store'
-export default {
-  name: 'page1',
-  data(){
-    return{
+  import {joinProject} from '@/api/request'
+  export default {
+    name: 'page1',
+    data(){
+      return{
 
-    }
-  },
-  methods:{
-    itemClick(item,index){
-      this.$router.push({
-        path:'/page2',
-
+      }
+    },
+    mounted(){
+      this.$toast('Hello world!')
+      let requestData={token:'4MskjSMoBcSBRPFWFYg6PnelhJ6RQuZd',code:'PRO201809060373',mobile:'18566205263'}
+      joinProject(requestData).then(res => {
+        alert('啦啦啦德玛西亚')
+        console.log(res)
+      }).catch(error => {
+        alert('啦啦啦德玛西亚2')
+        console.log(error)
       })
+    },
+    methods:{
+      itemClick(item,index){
+        this.$router.push({
+          path:'/page2',
+
+        })
+      }
     }
   }
-}
 </script>
 
 <style lang="less">

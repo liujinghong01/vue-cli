@@ -9,13 +9,13 @@ Router.prototype.isBack = false
 
 export default new Router({
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'enter',
+    //   component: enter
+    // },
     {
       path: '/',
-      name: 'enter',
-      component: enter
-    },
-    {
-      path: '/page1',
       name: 'page1',
       component: function (resolve) {
         require(['@/view/page1/index'], resolve)

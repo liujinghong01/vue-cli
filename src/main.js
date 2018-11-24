@@ -5,6 +5,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from '@/vuex/store'
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(preview)
 
 //按需引入部分组件
 import { Toast, Header} from 'mint-ui'
