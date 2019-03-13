@@ -15,7 +15,7 @@
   import store from '@/vuex/store'
   import {joinProject} from '@/api/request'
   export default {
-    name: 'page1',
+    name: 'page1-0',
     data(){
       return{
 
